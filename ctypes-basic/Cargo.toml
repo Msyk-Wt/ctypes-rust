@@ -1,0 +1,8 @@
+[package]
+name = "ctypes-basic"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+num-traits = "0.2"
+ctypes-endian = { path = "../ctypes-endian" }

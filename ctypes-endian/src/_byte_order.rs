@@ -26,7 +26,7 @@ impl ByteOrder {
     /// let value = byte_order.from_bytes::<u32>(&bytes);
     /// assert_eq!(value, 0x12345678);
     /// ```
-    pub fn from_bytes<V: FromBytes>(self, bytes: &V::Bytes) -> V {
+    pub fn value_from_bytes<V: FromBytes>(self, bytes: &V::Bytes) -> V {
         match self {
             Self::Little => V::from_le_bytes(bytes),
             Self::Big => V::from_be_bytes(bytes),
@@ -48,7 +48,7 @@ impl ByteOrder {
     /// let bytes = byte_order.to_bytes(&value);
     /// assert_eq!(bytes, [0x12, 0x34, 0x56, 0x78]);
     /// ```
-    pub fn to_bytes<V: ToBytes>(self, value: &V) -> V::Bytes {
+    pub fn bytes_from_value<V: ToBytes>(self, value: &V) -> V::Bytes {
         match self {
             Self::Little => V::to_le_bytes(value),
             Self::Big => V::to_be_bytes(value),
