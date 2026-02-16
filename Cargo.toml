@@ -5,6 +5,10 @@ edition = "2024"
 
 [workspace]
 resolver = "3"
-members = ["ctypes-endian"]
+members = [
+    "ctypes-endian",
+    "ctypes-basic", "ctypes-core",
+]
 
 [dependencies]
+ctypes-basic = {path = "ctypes-basic"}
