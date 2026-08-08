@@ -21,7 +21,7 @@ macro_rules! def_primitive_type {
     ) => {
 
         $(#[$type_meta])*
-        #[derive(Debug, Clone, Copy, Hash,
+        #[derive(Debug, Clone, Copy,
             derive_more::Display, derive_more::From,
             derive_more::Deref, derive_more::DerefMut,
             derive_more::LowerExp, derive_more::UpperExp)]
@@ -61,7 +61,7 @@ macro_rules! def_integer_type {
 
         def_primitive_type!(
             $(#[$type_meta])*
-            #[derive(derive_more::LowerHex, derive_more::UpperHex)]
+            #[derive(Hash, derive_more::LowerHex, derive_more::UpperHex)]
             $type_name
         );
     };
@@ -98,4 +98,12 @@ def_integer_type!(
 def_integer_type!(
     /// 符号無し64ビット整数
     U64
+);
+def_primitive_type!(
+    /// 浮動小数点32ビット実数
+    F32
+);
+def_primitive_type!(
+    /// 浮動小数点64ビット実数
+    F64
 );

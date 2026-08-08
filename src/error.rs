@@ -1,7 +1,7 @@
 
 /// エラー
 #[derive(Debug, derive_more::Display, derive_more::From)]
-pub struct Error(ErrorBase);
+pub struct Error(pub(crate) ErrorBase);
 impl Error {
     pub fn kind(&self) -> Option<ErrorKind> {
         match &self.0 {
@@ -26,7 +26,7 @@ impl<T> Into<Result<T, Error>> for Error {
 /// エラー種別
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, derive_more::Display)]
 pub enum ErrorKind {
-
+    InvalidByteSize,
 }
 
 #[derive(Debug, derive_more::Display, derive_more::From)]
