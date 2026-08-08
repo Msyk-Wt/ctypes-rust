@@ -4,7 +4,8 @@ version = "0.0.0"
 edition = "2024"
 
 [workspace]
-members = ["ctypes-endian"]
+members = ["ctypes-endian", "ctypes-primitive"]
 
 [dependencies]
 ctypes-endian = { path = "ctypes-endian" }
+ctypes-primitive = { path = "ctypes-primitive" }

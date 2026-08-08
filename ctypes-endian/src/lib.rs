@@ -2,6 +2,7 @@
 use num_traits::{ToBytes, FromBytes};
 
 /// データエンディアン
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, derive_more::Display)]
 pub enum Endian {
     /// リトルエンディアン
     Little,

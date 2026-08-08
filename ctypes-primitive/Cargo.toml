@@ -1,8 +1,9 @@
 [package]
-name = "ctypes-endian"
+name = "ctypes-primitive"
 version = "0.0.0"
 edition = "2024"
 
 [dependencies]
 derive_more = { version = "*", features = ["full"] }
 num-traits = "0.2"
+ctypes-endian = { path = "../ctypes-endian" }
