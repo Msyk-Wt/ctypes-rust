@@ -7,5 +7,7 @@ edition = "2024"
 members = ["ctypes-endian", "ctypes-primitive"]
 
 [dependencies]
+derive_more = { version = "*", features = ["full"] }
+num-traits = "0.2"
 ctypes-endian = { path = "ctypes-endian" }
 ctypes-primitive = { path = "ctypes-primitive" }
