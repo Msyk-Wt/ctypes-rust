@@ -11,3 +11,6 @@ derive_more = { version = "*", features = ["full"] }
 num-traits = "0.2"
 ctypes-endian = { path = "ctypes-endian" }
 ctypes-primitive = { path = "ctypes-primitive" }
+
+[features]
+arc = []
