@@ -110,6 +110,18 @@ macro_rules! def_basic_type {
                     $(Self::$variant_name(t) => t.byte_size(),)*
                 }
             }
+
+            pub fn to_le(&self) -> Self {
+                match self {
+                    $(Self::$variant_name(t) => Self::$variant_name(t.to_le()),)*
+                }
+            }
+
+            pub fn to_be(&self) -> Self {
+                match self {
+                    $(Self::$variant_name(t) => Self::$variant_name(t.to_be()),)*
+                }
+            }
         }
     };
 

@@ -27,6 +27,8 @@ impl<T> Into<Result<T, Error>> for Error {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, derive_more::Display)]
 pub enum ErrorKind {
     InvalidByteSize,
+    DuplicateEnumeratorName,
+    DuplicateEnumeratorValue,
 }
 
 #[derive(Debug, derive_more::Display, derive_more::From)]

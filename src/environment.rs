@@ -35,52 +35,75 @@ impl Environment {
         Ok(Self(env))
     }
 
+    /// アドレス型のバイトサイズを取得する
     pub fn address_size(&self) -> usize {
         self.as_ref().address_type.byte_size()
     }
 
+    /// デフォルトのエンディアンを取得する
     pub fn default_endian(&self) -> Endian {
         self.as_ref().default_endian
     }
 
+    /// 符号付き8ビット整数型を取得する
     pub fn i8(&self) -> Int8Type {
         Int8Type::new(self.default_endian())
     }
 
+    /// 符号付き16ビット整数型を取得する
     pub fn i16(&self) -> Int16Type {
         Int16Type::new(self.default_endian())
     }
 
+    /// 符号付き32ビット整数型を取得する
     pub fn i32(&self) -> Int32Type {
         Int32Type::new(self.default_endian())
     }
 
+    /// 符号付き64ビット整数型を取得する
     pub fn i64(&self) -> Int64Type {
         Int64Type::new(self.default_endian())
     }
 
+    /// 符号なし8ビット整数型を取得する
     pub fn u8(&self) -> Uint8Type {
         Uint8Type::new(self.default_endian())
     }
 
+    /// 符号なし16ビット整数型を取得する
     pub fn u16(&self) -> Uint16Type {
         Uint16Type::new(self.default_endian())
     }
 
+    /// 符号なし32ビット整数型を取得する
     pub fn u32(&self) -> Uint32Type {
         Uint32Type::new(self.default_endian())
     }
 
+    /// 符号なし64ビット整数型を取得する
     pub fn u64(&self) -> Uint64Type {
         Uint64Type::new(self.default_endian())
     }
 
+    /// 浮動小数点32ビット実数型を取得する
     pub fn f32(&self) -> Float32Type {
         Float32Type::new(self.default_endian())
     }
 
+    /// 浮動小数点64ビット実数型を取得する
     pub fn f64(&self) -> Float64Type {
         Float64Type::new(self.default_endian())
+    }
+
+    /// 列挙型を作成する
+    pub fn enumeration(&self, byte_size: usize) -> Result<EnumerationTypeBuilder, Error> {
+        EnumerationTypeBuilder::new(byte_size, self.clone())
+    }
+
+    /// ポインタ型を作成する
+    pub fn pointer<T>(&self, referenced_type: T) -> PointerType
+    where Type: From<T> {
+        PointerTypeBuilder::new(Type::from(referenced_type).key(), self.clone()).build()
     }
 
     #[cfg(not(feature="arc"))]
